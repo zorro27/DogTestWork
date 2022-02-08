@@ -31,19 +31,25 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="9Nc-yq-T60">
+                                <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="V3f-RK-Kp6" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="3Ud-8A-2Fg"/>
                             <constraint firstItem="V3f-RK-Kp6" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Clx-Sg-wc1"/>
+                            <constraint firstItem="9Nc-yq-T60" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="GAN-zQ-iaB"/>
                             <constraint firstAttribute="bottom" secondItem="V3f-RK-Kp6" secondAttribute="bottom" id="Ldj-Zv-lmb"/>
                             <constraint firstItem="V3f-RK-Kp6" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="owh-1i-JHm"/>
+                            <constraint firstItem="9Nc-yq-T60" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vox-PV-xfW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="always" id="5Fi-01-zNx"/>
                     <connections>
                         <outlet property="TableBreed" destination="V3f-RK-Kp6" id="35x-Or-XIX"/>
+                        <outlet property="spinner" destination="9Nc-yq-T60" id="6bf-c0-ggk"/>
                         <segue destination="nTJ-Od-xXR" kind="show" identifier="goTo" id="oAo-FE-KbB"/>
                     </connections>
                 </viewController>
@@ -59,12 +65,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="04G-L5-w8E">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="04G-L5-w8E">
                             <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
+                        <activityIndicatorView key="backgroundView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" id="bdc-Oz-hGr">
+                            <rect key="frame" x="0.0" y="-88" width="414" height="896"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        </activityIndicatorView>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="photoCell" id="zO5-YM-TUK" customClass="PhotoCell" customModule="DogProject" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
@@ -95,10 +105,43 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" largeTitleDisplayMode="never" id="uoi-qW-a1D"/>
+                    <connections>
+                        <outlet property="spinner" destination="bdc-Oz-hGr" id="oac-sV-Sx7"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zE3-Zj-J2R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1621.7391304347827" y="-261.16071428571428"/>
+        </scene>
+        <!--Image Controller-->
+        <scene sceneID="r0V-PP-l8U">
+            <objects>
+                <viewController storyboardIdentifier="imageController" id="NOj-vf-0aY" customClass="ImageController" customModule="DogProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mr4-D8-Zx9">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p5x-td-dss">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="okT-8c-ThW"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="p5x-td-dss" firstAttribute="trailing" secondItem="okT-8c-ThW" secondAttribute="trailing" id="7el-Sz-v84"/>
+                            <constraint firstItem="p5x-td-dss" firstAttribute="top" secondItem="okT-8c-ThW" secondAttribute="top" id="IXO-D9-Ku4"/>
+                            <constraint firstItem="p5x-td-dss" firstAttribute="leading" secondItem="okT-8c-ThW" secondAttribute="leading" id="LxC-oi-Jwj"/>
+                            <constraint firstItem="p5x-td-dss" firstAttribute="bottom" secondItem="okT-8c-ThW" secondAttribute="bottom" id="eJe-ns-oBa"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="NXY-1X-kVN"/>
+                    <connections>
+                        <outlet property="PhotoDog" destination="p5x-td-dss" id="ue2-kT-Tu5"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BHp-D3-GXX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2428.985507246377" y="-251.11607142857142"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5bQ-S4-lGp">
